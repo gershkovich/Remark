@@ -1,0 +1,69 @@
+/** Add css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+body, td, a, div, .p {
+    font-family: arial, sans-serif
+}
+
+.sendButton {
+
+}
+
+.dialogVPanel {
+
+}
+
+.serverResponseLabelError {
+
+}
+
+.serverResponseLabelError {
+
+}
+
+.navigation_panel   {
+
+    position: relative;
+    width: 100%;
+    margin-left: 10px;
+    /*padding-left: 10pt ;*/
+    text-align: left;
+
+    vertical-align: top;
+
+}
+
+.cell_list {
+
+    text-align: left;
+    /*margin-left: 20pt;*/
+
+}
+
+ .search_box  {
+
+    /*margin-left: 20pt;*/
+
+    /*padding-left: 20pt;*/
+
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border:solid 3px dodgerblue;
+
+
+     height: 30px;
+
+     padding-bottom: 20px;
+
+     font-size: 12pt;
+
+}
+
+.search_box:focus {outline: none; }
+
