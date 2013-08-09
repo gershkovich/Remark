@@ -18,6 +18,14 @@ public interface RemarkService extends RemoteService
 
     ServerResponse getPeople(String commentText);
 
+    ServerResponse checkForSessionTimeout();
+
+    String logoutUser();
+
+    ServerResponse checkCredentials(String loginNameText, String userPasswordText, boolean flag);
+
+    ServerResponse successfulLogin();
+
     /**
      * Utility/Convenience class.
      * Use RemarkService.App.getInstance() to access static instance of RemarkServiceAsync

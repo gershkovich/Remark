@@ -1,161 +1,200 @@
 package org.siberian.remark.client;
 
-import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.dom.client.StyleInjector;
-import com.google.gwt.event.dom.client.*;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.user.cellview.client.CellList;
-import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.event.logical.shared.*;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
-import com.google.gwt.view.client.SelectionChangeEvent;
-import com.google.gwt.view.client.SingleSelectionModel;
 import org.siberian.remark.client.model.ServerResponse;
+import org.siberian.remark.client.panel.LoginPanel;
+import org.siberian.remark.client.panel.UpperBandPanel;
+import org.siberian.remark.client.utils.Constants;
+import org.siberian.remark.client.utils.StringUtils;
 
-import java.util.ArrayList;
-
-
-/**
- * Entry point classes define <code>onModuleLoad()</code>.
- */
-public class Remark implements EntryPoint {
+public class Remark implements EntryPoint  , ValueChangeHandler<String>
+{
     private static final AppConstants CONSTANTS = GWT.create(AppConstants.class);
 
-    /**
-     * The message displayed to the user when the server cannot be reached or
-     * returns an error.
-     */
-    private static final String SERVER_ERROR = "An error occurred while "
-            + "attempting to contact the server. Please check your network "
-            + "connection and try again.";
+    private final RootLayoutPanel rootLayoutPanel = RootLayoutPanel.get();
 
-    /**
-     * Create a remote service proxy to talk to the server-side Greeting service.
-     */
-    private final RemarkServiceAsync remarkServiceAsync = GWT
-            .create(RemarkService.class);
-    private TextBox nameField;
-    private Button btnButton;
+    private UpperBandPanel upperBandPanel = new UpperBandPanel();
+
+    private VerticalPanel centerPanel = new VerticalPanel();
 
     /**
      * This is the entry point method.
      */
-    public void onModuleLoad() {
+    public void onModuleLoad()
+    {
+        centerPanel.setSize( "100%", "100%" );
 
-        // Create a three-pane layout with splitters.
-        SplitLayoutPanel splitLayoutPanel = new SplitLayoutPanel(15);
+        centerPanel.add(upperBandPanel);
 
-        splitLayoutPanel.addNorth(new HTML("list"), 50);
-        VerticalPanel verticalPanel = new VerticalPanel();
-        splitLayoutPanel.addWest(verticalPanel, 250);
+        centerPanel.setStyleName("core_center_panel");
 
-        splitLayoutPanel.add(new HTML("details"));
+        centerPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 
+        rootLayoutPanel.add( centerPanel );
 
+        Window.enableScrolling( false );
 
-        TextBox searchBox = new TextBox();
+        History.addValueChangeHandler(this);
 
-        searchBox.setWidth("200");
+        History.fireCurrentHistoryState();
 
-        searchBox.setStyleName("search_box");
-        
-        
-        HorizontalPanel searchPanel = new HorizontalPanel();
-        
-        searchPanel.add(searchBox);
+    }
 
-        Image searchImage = new Image("images/search_icon.jpg") ;
+    public void onValueChange(ValueChangeEvent<String> event)
+    {
+        String historyToken = History.getToken();
 
-        searchImage.setPixelSize(35,35);
+        if ( historyToken.isEmpty() )
+        {
+            historyToken = "login";
+        }
 
-        searchPanel.add(searchImage);
+        if ( historyToken.equalsIgnoreCase( Constants.LOGIN ) )
+        {
+            RootLayoutPanel rp = RootLayoutPanel.get();
 
+            rp.clear();
 
+            rootLayoutPanel.add( centerPanel );
 
-
-
-        verticalPanel.setStylePrimaryName("navigation_panel");
-
-        verticalPanel.add(searchPanel);
-
-        verticalPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-
-        ArrayList<String> people = new ArrayList<String>();
-
-        people.add("Hammond");
-
-        people.add("Rebeca");
-
-        people.add("Lui the 16th");
-
-        TextCell textCell = new TextCell();
-
-        // Create a CellList that uses the cell.
-        CellList<String> cellList = new CellList<String>(textCell);
-
-        cellList.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
-
-        // Add a selection model to handle user selection.
-        final SingleSelectionModel<String> selectionModel = new SingleSelectionModel<String>();
-        cellList.setSelectionModel(selectionModel);
-        selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-            public void onSelectionChange(SelectionChangeEvent event) {
-                String selected = selectionModel.getSelectedObject();
-                if (selected != null) {
-
-
-                    Window.alert("You selected: " + selected);
-                }
+            if (upperBandPanel == null)
+            {
+                upperBandPanel = new UpperBandPanel();
             }
-        });
 
+            upperBandPanel.startup();
 
-        cellList.setStyleName("cell_list");
+            centerPanel.clear();
 
-        // Set the total row count. This isn't strictly necessary, but it affects
-        // paging calculations, so its good habit to keep the row count up to date.
-        cellList.setRowCount(people.size(), true);
+            centerPanel.setSize( "100%", "100%" );
 
-        // Push the data into the widget.
-        cellList.setRowData(0, people);
+            centerPanel.setVerticalAlignment( HasVerticalAlignment.ALIGN_TOP );
 
-        verticalPanel.add(cellList);
+            centerPanel.setHorizontalAlignment( HasHorizontalAlignment.ALIGN_CENTER );
 
+            centerPanel.add(upperBandPanel);
 
-        textCell.handlesSelection();
+            final HorizontalPanel insideCenterPanel = new HorizontalPanel();
 
+         //   insideCenterPanel.setWidth( Window.getClientWidth() - 150 + "px" );
 
+            Window.addResizeHandler( new ResizeHandler()
+            {
+                public void onResize( ResizeEvent event )
+                {
+                  //  insideCenterPanel.setWidth( Window.getClientWidth() - 150 + "px" );
+                }
+            } );
 
-        // Attach the LayoutPanel to the RootLayoutPanel. The latter will listen for
-        // resize events on the window to ensure that its children are informed of
-        // possible size changes.
+            insideCenterPanel.setVerticalAlignment( HasVerticalAlignment.ALIGN_TOP );
 
-        StyleInjector.inject(".gwt-SplitLayoutPanel .gwt-SplitLayoutPanel-HDragger "
-                + "{ background: darkseagreen;  }");
+            insideCenterPanel.setHorizontalAlignment( HasHorizontalAlignment.ALIGN_CENTER );
 
-        StyleInjector.inject(".gwt-SplitLayoutPanel .gwt-SplitLayoutPanel-VDragger "
-                + "{ width: 100%;  background: darkseagreen; }");
+            final LoginPanel loginPanel = new LoginPanel();
 
+            insideCenterPanel.add( loginPanel );
 
+            centerPanel.setVerticalAlignment( HasVerticalAlignment.ALIGN_TOP );
 
-        RootLayoutPanel rp = RootLayoutPanel.get();
-        rp.add(splitLayoutPanel);
+            centerPanel.setHorizontalAlignment( HasHorizontalAlignment.ALIGN_CENTER );
+
+            centerPanel.add( insideCenterPanel );
+
+            Scheduler.get().scheduleDeferred( new Scheduler.ScheduledCommand()
+            {
+                public void execute()
+                {
+                    loginPanel.getLoginName().setFocus( true );
+                }
+            } );
+        }
+        else if ( historyToken.equalsIgnoreCase( Constants.SESSION_EXPIRED_CODE ) )
+        {
+            upperBandPanel.terminateTimers = true;
+
+            RemarkService.App.getInstance().logoutUser( new LogoutUserAsyncCallback() );
+
+        }
+        else if ( historyToken.equalsIgnoreCase( Constants.SUCCESSFUL_LOGIN ) )
+        {//
+            centerPanel.clear();
+
+            if (upperBandPanel == null)
+            {
+                upperBandPanel = new UpperBandPanel();
+            }
+
+            centerPanel.add(upperBandPanel);
+
+            centerPanel.setVerticalAlignment( HasVerticalAlignment.ALIGN_TOP );
+
+            centerPanel.setHorizontalAlignment( HasHorizontalAlignment.ALIGN_CENTER );
+
+            centerPanel.setWidth( "100%" );
+
+            RemarkService.App.getInstance().successfulLogin( new SuccessfulLoginAsyncCallback() );
+        }
+
     }
-    public String getNameFieldText() {
-        return nameField.getText();
-    }
-    public void setNameFieldText(String text) {
-        nameField.setText(text);
+
+    private class SuccessfulLoginAsyncCallback implements AsyncCallback<ServerResponse>
+    {
+        public void onFailure( Throwable caught )
+        {
+            //headerPanel.successfulLogin( "", centerPanel, 900 );
+
+            History.newItem( Constants.LOGIN );
+        }
+
+        public void onSuccess( ServerResponse result )
+        {
+            if ( !StringUtils.isEmpty(result.getNextStep()) && result.getNextStep().equalsIgnoreCase( Constants.SESSION_EXPIRED_CODE ) )
+            {
+                History.newItem( Constants.SESSION_EXPIRED_CODE );
+            }
+            else if ( result.getErrorMessage() == null || result.getErrorMessage().length() < 1 )
+            {
+
+                    if ( StringUtils.isEmpty( result.getUserName() ) )
+                    {
+                        History.newItem( Constants.LOGIN );
+                    }
+                    else
+                    {
+                        upperBandPanel.successfulLogin( result.getUserName(),
+                                centerPanel);
+                    }
+
+            }
+            else
+            {
+                History.newItem( Constants.LOGIN );
+            }
+        }
     }
 
-    public Button getBtnButton() {
-        return btnButton;
+
+    private class LogoutUserAsyncCallback implements AsyncCallback<String>
+    {
+        public void onFailure( Throwable caught )
+        {   rootLayoutPanel.clear();
+            History.newItem( Constants.LOGIN );
+        }
+
+        public void onSuccess( String result )
+        {
+            rootLayoutPanel.clear();
+            History.newItem( Constants.LOGIN );
+        }
     }
+
+
+
 }

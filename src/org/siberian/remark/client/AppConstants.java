@@ -6,4 +6,12 @@ public interface AppConstants extends Constants {
 	String nameField_text();
 	String btnButton_html();
 	String sendButton_html();
+
+    String getSignOut();
+
+    String getUserNameLabel();
+
+    String getUserPasswordLabel();
+
+    String getFailedResponseError();
 }

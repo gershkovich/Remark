@@ -16,4 +16,39 @@ public class RemarkServiceImpl extends RemoteServiceServlet implements RemarkSer
 
         return serverResponse;
     }
+
+    public ServerResponse checkForSessionTimeout()
+    {
+
+        ServerResponse serverResponse = new ServerResponse();
+
+        serverResponse.setUserName("Peter");
+
+        return serverResponse;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String logoutUser()
+    {
+
+        return "logout";  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public ServerResponse checkCredentials(String loginNameText, String userPasswordText, boolean flag)
+    {
+        ServerResponse serverResponse = new ServerResponse();
+
+        serverResponse.setUserName("Peter");
+
+        return serverResponse;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public ServerResponse successfulLogin()
+    {
+
+        ServerResponse serverResponse = new ServerResponse();
+
+        serverResponse.setUserName("Peter");
+
+        return serverResponse;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

@@ -13,6 +13,12 @@ public class ServerResponse implements IsSerializable
 {
     private String id;
 
+    private String nextStep;
+
+    private String errorMessage;
+
+    private String userName;
+
     public String getId()
     {
 
@@ -23,5 +29,41 @@ public class ServerResponse implements IsSerializable
     {
 
         this.id = id;
+    }
+
+    public String getNextStep()
+    {
+
+        return nextStep;
+    }
+
+    public void setNextStep(String nextStep)
+    {
+
+        this.nextStep = nextStep;
+    }
+
+    public String getErrorMessage()
+    {
+
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage)
+    {
+
+        this.errorMessage = errorMessage;
+    }
+
+    public String getUserName()
+    {
+
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+
+        this.userName = userName;
     }
 }
