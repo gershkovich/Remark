@@ -6,6 +6,14 @@ h1 {
     text-align: center;
 }
 
+.cw-FlexTable td {
+    border: 1px solid #BBBBBB;
+    padding: 3px;
+}
+.cw-FlexTable-buttonPanel td {
+    border: 0px;
+}
+
 
 body, td, a, div, .p {
     font-family: arial, sans-serif
@@ -69,7 +77,7 @@ body, td, a, div, .p {
 
 .errorMessage {
     
-    text-decoration-color: red;
+    color: red;
 
 }
 
@@ -282,6 +290,110 @@ body, td, a, div, .p {
 
 
 }
+
+.sc-FixedWidthButton {
+
+
+
+}
+
+/* StyleInjector.inject(".gwt-ToggleButton-up  { color: navy;  color: cornflowerblue;}");
+
+       */
+
+.milestone_button_up {
+    color: gray;
+
+    border: none;
+
+}
+
+.milestone_button_down {
+
+    color: darkblue;
+    background: lightyellow;
+
+    border: none;
+}
+
+.milestone_text_cell {
+
+    height: 5em;
+
+    width: 6em;
+
+}
+
+.personInfoPanel {
+
+    position: relative;
+    vertical-align: bottom;
+
+    text-align: left;
+
+
+
+}
+
+
+.personInfoButton_up {
+
+    padding-left: 30px;
+    color: gray;
+
+    text-decoration: underline;
+
+    border: none;
+
+}
+
+.personInfoButton:focus {outline: none; }
+
+
+.personInfoButton {padding-left: 30px ;
+    color: gray;
+
+    text-decoration: underline;
+
+    border: none;
+}
+
+.personInfoButton_down {
+    padding-left: 30px;
+    color: darkblue;
+    text-decoration: underline;
+
+
+}
+
+
+
+/*.gwt-ToggleButton-up  {*/
+    /*color: navy;*/
+/*}*/
+
+ /*.gwt-ToggleButton-up-hovering {*/
+    /*color: cornflowerblue;*/
+/*}*/
+
+ /*.gwt-ToggleButton-up-disabled {*/
+    /*color: darkseagreen;*/
+/*}*/
+
+ /*.gwt-ToggleButton-down  {*/
+    /*color: sienna;*/
+/*}*/
+
+ /*.gwt-ToggleButton-down-hovering {*/
+    /*color: cornflowerblue;*/
+/*}*/
+
+ /*.gwt-ToggleButton-down-disabled {*/
+    /*color: gray;*/
+/*}*/
+
+
+
 
 
 

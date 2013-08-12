@@ -2,6 +2,7 @@ package org.siberian.remark.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.siberian.remark.client.model.ServerResponse;
+import org.siberian.remark.client.panel.EvaluationPanel;
 import org.siberian.remark.client.panel.LoginPanel;
 
 /**
@@ -24,4 +25,6 @@ public interface RemarkServiceAsync
                           AsyncCallback<ServerResponse> async);
 
     void successfulLogin(AsyncCallback<ServerResponse> async);
+
+    void getEvaluationTracks(String text,  AsyncCallback<ServerResponse> async);
 }

@@ -13,4 +13,7 @@
         <servlet-name>org.siberian.remark.Remark RemarkService</servlet-name>
         <url-pattern>/remark/RemarkService</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>remark.html</welcome-file>
+    </welcome-file-list>
 </web-app>

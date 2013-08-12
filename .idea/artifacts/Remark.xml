@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Remark">
+    <output-path>$PROJECT_DIR$/out/artifacts/Remark</output-path>
+    <root id="archive" name="Remark.war">
+      <element id="artifact" artifact-name="Remark:Web exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jfreechart-1.0.15-swt.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/swtgraphics2d.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/iText-2.1.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jcommon-1.0.18.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jfreechart-1.0.15-experimental.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

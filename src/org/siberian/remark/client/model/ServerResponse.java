@@ -19,6 +19,8 @@ public class ServerResponse implements IsSerializable
 
     private String userName;
 
+    private String evaluationPath;
+
     public String getId()
     {
 
@@ -65,5 +67,13 @@ public class ServerResponse implements IsSerializable
     {
 
         this.userName = userName;
+    }
+
+    public String getEvaluationPath() {
+        return evaluationPath;
+    }
+
+    public void setEvaluationPath(String evaluationPath) {
+        this.evaluationPath = evaluationPath;
     }
 }

@@ -10,7 +10,8 @@ import org.siberian.remark.client.model.ServerResponse;
  * User: pg86
  * Date: 8/8/13
  * Time: 11:33 AM
- * To change this template use File | Settings | File Templates.
+ *
+ *
  */
 @RemoteServiceRelativePath( "RemarkService" )
 public interface RemarkService extends RemoteService
@@ -25,6 +26,8 @@ public interface RemarkService extends RemoteService
     ServerResponse checkCredentials(String loginNameText, String userPasswordText, boolean flag);
 
     ServerResponse successfulLogin();
+
+    ServerResponse getEvaluationTracks(String text);
 
     /**
      * Utility/Convenience class.

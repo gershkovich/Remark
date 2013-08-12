@@ -51,4 +51,14 @@ public class RemarkServiceImpl extends RemoteServiceServlet implements RemarkSer
 
         return serverResponse;  //To change body of implemented methods use File | Settings | File Templates.
     }
+
+    @Override
+    public ServerResponse getEvaluationTracks(String text) {
+
+        ServerResponse serverResponse = new ServerResponse();
+
+        serverResponse.setUserName("Peter");
+
+        return serverResponse;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
