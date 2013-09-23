@@ -27,4 +27,6 @@ public interface RemarkServiceAsync
     void successfulLogin(AsyncCallback<ServerResponse> async);
 
     void getEvaluationTracks(String text,  AsyncCallback<ServerResponse> async);
+
+    void getEvaluationAxis(String id, AsyncCallback<ServerResponse> async);
 }

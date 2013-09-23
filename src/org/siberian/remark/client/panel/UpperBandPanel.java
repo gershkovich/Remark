@@ -29,19 +29,9 @@ public class UpperBandPanel extends Composite
 
     private VerticalPanel coreUpperBandPanel = new VerticalPanel();
 
-    private Label feedbackMessageLabel = new Label();
-
     final HorizontalPanel upperBand = new HorizontalPanel();
 
-   // final HorizontalPanel lowerBand = new HorizontalPanel();
-
-   // final HorizontalPanel lowerLogoBand = new HorizontalPanel();
-
-    private Image ajaxLoadImage = new Image("images/blank.png");
-
-    private VerticalPanel centerPanel;
-
-    private Image logoAppInUse = new Image("images/appTitle.png");
+    private Image logoAppInUse = new Image("images/remark_logo.png");
 
     public Timer sessionTimeoutTimer = new Timer()
     {
@@ -49,7 +39,7 @@ public class UpperBandPanel extends Composite
         public void run()
         {
 
-            if ( terminateTimers )
+            if (terminateTimers)
             {
                 this.cancel();
 
@@ -67,7 +57,7 @@ public class UpperBandPanel extends Composite
 
         terminateTimers = true;
 
-        if ( sessionTimeoutTimer != null )
+        if (sessionTimeoutTimer != null)
         {
             sessionTimeoutTimer.cancel();
         }
@@ -77,10 +67,6 @@ public class UpperBandPanel extends Composite
     {
 
         startup();
-
-        feedbackMessageLabel.setWordWrap(true);
-
-        feedbackMessageLabel.setStyleName("errorMessage");
 
         coreUpperBandPanel.setStyleName("headerPanelBackground");
 
@@ -96,7 +82,7 @@ public class UpperBandPanel extends Composite
 
         //lowerBand.clear();
 
-        Image logoForLogin = new Image("images/appTitle.png");
+        Image logoForLogin = new Image("images/remark_logo.png");
 
         logoForLogin.setStyleName("logoForLogin");
 
@@ -108,29 +94,14 @@ public class UpperBandPanel extends Composite
 
         upperBand.add(logoForLogin);
 
-        //		lowerBand.setHeight( "100%" );
-
-       // lowerBand.setStyleName("lowerBand_init");
-
-//        logoAppInUseLowBand.setStyleName("logoLowerBand");
-//
-//        logoAppInUseLowBand.setHeight("20px");
-
-      //  lowerBand.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-
-     //   lowerBand.add(logoAppInUseLowBand);
-
         coreUpperBandPanel.setWidth("100%");
 
         coreUpperBandPanel.setHeight("65px");
 
         coreUpperBandPanel.setStyleName("headerPanelBackground");
 
-        //		coreUpperBandPanel.setVerticalAlignment( HasVerticalAlignment.ALIGN_BOTTOM );
-
         coreUpperBandPanel.add(upperBand);
 
-     //   coreUpperBandPanel.add(lowerBand);
     }
 
 
@@ -144,7 +115,7 @@ public class UpperBandPanel extends Composite
         public void onFailure(Throwable caught)
         {
             History.newItem(Constants.LOGIN);
-           RootLayoutPanel.get().clear();
+            RootLayoutPanel.get().clear();
             reloadApp();
 
         }
@@ -170,32 +141,30 @@ public class UpperBandPanel extends Composite
         public void onSuccess(ServerResponse result)
         {
 
-            if ( !StringUtils.isEmpty(result.getNextStep()) && result.getNextStep().equalsIgnoreCase(Constants.SESSION_EXPIRED_CODE) )
+            if (!StringUtils.isEmpty(result.getNextStep()) && result.getNextStep().equalsIgnoreCase(Constants.SESSION_EXPIRED_CODE))
             {
                 History.newItem(Constants.SESSION_EXPIRED_CODE);
             }
         }
     }
 
-    public void successfulLogin(String prettyPrintNameIn,
-                                VerticalPanel centerPanelIn)
+    public void successfulLogin(String prettyPrintNameIn)
+
     {
 
         terminateTimers = false;
 
         sessionTimeoutTimer.scheduleRepeating(60000);
 
-        centerPanel = centerPanelIn;
-
         upperBand.clear();
 
-      //  lowerBand.clear();
+        //  lowerBand.clear();
 
         //lowerLogoBand.clear();
 
         coreUpperBandPanel.clear();
 
-     //   lowerBand.setStyleName("lowerBand");
+        //   lowerBand.setStyleName("lowerBand");
 
         //lowerLogoBand.setStyleName("lowerLogoBand");
 
@@ -209,7 +178,7 @@ public class UpperBandPanel extends Composite
 
         upperBand.setWidth("100%");
 
-     //   lowerBand.setWidth("100%");
+        //   lowerBand.setWidth("100%");
 
         //		lowerBand.setHeight( "100%" );
 
@@ -250,7 +219,7 @@ public class UpperBandPanel extends Composite
         final MenuItem userNameMenuItem = new MenuItem(prettyPrintNameIn, userNameMenuBar);
 
 
-        		userNameMenuBar.setWidth( "20%" );
+        userNameMenuBar.setWidth("20%");
 
         userNameMenuBar.setStyleName("customMenuItem");
 
@@ -265,7 +234,7 @@ public class UpperBandPanel extends Composite
 
         logoutMenuItem.setWidth("20%");
 
-        final MenuBar menuBar = new MenuBar( true );
+        final MenuBar menuBar = new MenuBar(true);
 
         mainMenuBar.setStyleName("customMenuItem");
 
@@ -335,7 +304,7 @@ public class UpperBandPanel extends Composite
 
         //lowerLogoBand.add(logoAppInUseLowBand);
 
-       // lowerBand.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+        // lowerBand.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
 
 //        lowerBand.add(lowerLogoBand);
 //
@@ -346,7 +315,7 @@ public class UpperBandPanel extends Composite
 
         coreUpperBandPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
 
-       // coreUpperBandPanel.add(lowerBand);
+        // coreUpperBandPanel.add(lowerBand);
 
         upperBand.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 
@@ -359,14 +328,14 @@ public class UpperBandPanel extends Composite
         upperBand.add(new HTML("&nbsp;&nbsp;&nbsp;"));
 
 
-     //   centerPanel.add(coreUpperBandPanel);
+        //   centerPanel.add(coreUpperBandPanel);
 
-        EvaluationPanel evaluationPanel = new EvaluationPanel(feedbackMessageLabel,
-                this,
-                ajaxLoadImage);
-
-
-        evaluationPanel.buildPanel();
+//        EvaluationPanel evaluationPanel = new EvaluationPanel(feedbackMessageLabel,
+//                this,
+//                ajaxLoadImage);
+//
+//
+//        evaluationPanel.buildPanel();
     }
 
 }

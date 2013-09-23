@@ -1,5 +1,7 @@
 package org.siberian.remark.client.model;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: petergershkovich
@@ -7,7 +9,8 @@ package org.siberian.remark.client.model;
  * Time: 9:55 AM
 
  */
-public class Evaluation {
+public class Evaluation implements IsSerializable
+{
     private int seq;
 
     private String category;

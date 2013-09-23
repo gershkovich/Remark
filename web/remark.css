@@ -8,12 +8,17 @@ h1 {
 
 .cw-FlexTable td {
     border: 1px solid #BBBBBB;
-    padding: 3px;
-}
-.cw-FlexTable-buttonPanel td {
-    border: 0px;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+
 }
 
+.cw-FlexTable-buttonPanel td {
+    border: 0;
+    vertical-align: top;
+    display: inline-block;
+}
 
 body, td, a, div, .p {
     font-family: arial, sans-serif
@@ -35,7 +40,7 @@ body, td, a, div, .p {
 
 }
 
-.navigation_panel   {
+.navigation_panel {
 
     position: relative;
     width: 100%;
@@ -51,10 +56,11 @@ body, td, a, div, .p {
 
     text-align: left;
     /*margin-left: 20pt;*/
+    display: inline-block;
 
 }
 
- .search_box  {
+.search_box {
 
     /*margin-left: 20pt;*/
 
@@ -62,21 +68,22 @@ body, td, a, div, .p {
 
     -moz-border-radius: 15px;
     border-radius: 15px;
-    border:solid 3px dodgerblue;
+    border: solid 3px dodgerblue;
 
+    height: 30px;
 
-     height: 30px;
+    padding-bottom: 20px;
 
-     padding-bottom: 20px;
-
-     font-size: 12pt;
+    font-size: 12pt;
 
 }
 
-.search_box:focus {outline: none; }
+.search_box:focus {
+    outline: none;
+}
 
 .errorMessage {
-    
+
     color: red;
 
 }
@@ -91,7 +98,6 @@ body, td, a, div, .p {
     margin-left: 65px;
 
 }
-
 
 .logoAppInUse {
 
@@ -126,8 +132,7 @@ body, td, a, div, .p {
     background-color: #4F4D46; /*background-color: #df964f;*/
     text-align: left;
 
-    vertical-align:top;
-
+    vertical-align: top;
 
 }
 
@@ -152,11 +157,7 @@ body, td, a, div, .p {
 
     text-align: right; /*border-top: 2px solid #ddbeac;*/
 
-
 }
-
-
-
 
 .customMenuItem {
     border: none;
@@ -213,7 +214,6 @@ body, td, a, div, .p {
     WHITE-SPACE: nowrap;
 }
 
-
 .interfaceLabelWrap {
     text-align: left;
     font-size: 10pt;
@@ -260,7 +260,6 @@ body, td, a, div, .p {
 
 .buttonFormat {
 
-
     margin-top: 5px;
 
     margin-bottom: 5px;
@@ -285,15 +284,11 @@ body, td, a, div, .p {
 
 }
 
-.core_center_panel   {
-
-
+.core_center_panel {
 
 }
 
 .sc-FixedWidthButton {
-
-
 
 }
 
@@ -316,6 +311,14 @@ body, td, a, div, .p {
     border: none;
 }
 
+.milestone_button_down:focus {
+    outline: none;
+}
+
+.milestone_button_up:focus {
+    outline: none;
+}
+
 .milestone_text_cell {
 
     height: 5em;
@@ -324,17 +327,15 @@ body, td, a, div, .p {
 
 }
 
-.personInfoPanel {
+.learnerInfoPanel {
 
+    margin-top: 5pt;
     position: relative;
     vertical-align: bottom;
 
     text-align: left;
 
-
-
 }
-
 
 .personInfoButton_up {
 
@@ -347,10 +348,12 @@ body, td, a, div, .p {
 
 }
 
-.personInfoButton:focus {outline: none; }
+.personInfoButton:focus {
+    outline: none;
+}
 
-
-.personInfoButton {padding-left: 30px ;
+.personInfoButton {
+    padding-left: 30px;
     color: gray;
 
     text-decoration: underline;
@@ -360,37 +363,91 @@ body, td, a, div, .p {
 
 .personInfoButton_down {
     padding-left: 30px;
-    color: darkblue;
+    color: chocolate;
     text-decoration: underline;
-
 
 }
 
+.flexTableCell {
 
+    text-align: left;
+    display: inline-block;
+    position: relative;
 
-/*.gwt-ToggleButton-up  {*/
-    /*color: navy;*/
-/*}*/
+}
 
- /*.gwt-ToggleButton-up-hovering {*/
-    /*color: cornflowerblue;*/
-/*}*/
+.axis_table {
 
- /*.gwt-ToggleButton-up-disabled {*/
-    /*color: darkseagreen;*/
-/*}*/
+}
 
- /*.gwt-ToggleButton-down  {*/
-    /*color: sienna;*/
-/*}*/
+.axis_label {
 
- /*.gwt-ToggleButton-down-hovering {*/
-    /*color: cornflowerblue;*/
-/*}*/
+}
 
- /*.gwt-ToggleButton-down-disabled {*/
-    /*color: gray;*/
-/*}*/
+.axis_style {
+
+}
+
+div .sup {
+
+    color: olivedrab;
+}
+
+.axis_style {
+
+    border: solid thin hotpink;
+    color: darkblue;
+
+    padding: 5pt;
+
+}
+
+.axis_label {
+    /*padding: 10pt;*/
+    /*margin: 15pt;*/
+
+}
+
+.axis_table {
+    /*border: solid thin hotpink;*/
+
+    background: lightgoldenrodyellow;
+}
+
+.flexTableHeader {
+
+    color: #f2b54a;
+
+    font-weight: bold;
+
+}
+
+.comment_panel {
+
+    background-color: #e0ffe4;
+
+    margin-top: 5pt;
+
+    width: 100%;
+
+    padding: 10pt;
+
+}
+
+.comment_label_title {
+
+    color: cadetblue;
+
+    font-weight: bold;
+
+}
+
+.axis_top_label {
+
+    margin-left: 20pt;
+    color: cadetblue;
+
+}
 
 
 

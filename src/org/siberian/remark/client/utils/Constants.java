@@ -22,4 +22,15 @@ public class Constants
 
     public static final String SUCCESSFUL_LOGIN = "successfulLogin";
 
+    public static final String ASPIRATIONAL = "aspirational";
+
+    public static final String DEFICIENCY = "deficiency";
+
+    public static final String PROGRESS1 = "progress1";
+
+    public static final String PROGRESS2 = "progress2";
+
+    public static final String UNSUPERVISED = "unsupervised";
+
+
 }

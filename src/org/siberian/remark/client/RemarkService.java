@@ -29,6 +29,8 @@ public interface RemarkService extends RemoteService
 
     ServerResponse getEvaluationTracks(String text);
 
+    ServerResponse getEvaluationAxis(String text);
+
     /**
      * Utility/Convenience class.
      * Use RemarkService.App.getInstance() to access static instance of RemarkServiceAsync

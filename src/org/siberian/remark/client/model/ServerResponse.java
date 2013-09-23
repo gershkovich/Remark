@@ -2,12 +2,13 @@ package org.siberian.remark.client.model;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: pg86
  * Date: 8/8/13
  * Time: 11:38 AM
- * To change this template use File | Settings | File Templates.
  */
 public class ServerResponse implements IsSerializable
 {
@@ -20,6 +21,12 @@ public class ServerResponse implements IsSerializable
     private String userName;
 
     private String evaluationPath;
+
+    private ArrayList<Learner> learners = new ArrayList<Learner>();
+
+    private ArrayList<EvaluationAxis> evaluationAxises = new ArrayList<EvaluationAxis>();
+
+    private EvaluationAxis evaluationAxis = null;
 
     public String getId()
     {
@@ -75,5 +82,26 @@ public class ServerResponse implements IsSerializable
 
     public void setEvaluationPath(String evaluationPath) {
         this.evaluationPath = evaluationPath;
+    }
+
+    public ArrayList<Learner> getLearners()
+    {
+        return learners;
+    }
+
+    public ArrayList<EvaluationAxis> getEvaluationAxises()
+    {
+        return evaluationAxises;
+    }
+
+
+    public EvaluationAxis getEvaluationAxis()
+    {
+        return evaluationAxis;
+    }
+
+    public void setEvaluationAxis(EvaluationAxis evaluationAxis)
+    {
+        this.evaluationAxis = evaluationAxis;
     }
 }
